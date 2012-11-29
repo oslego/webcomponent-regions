@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>Regions with Web Components</title>
+</head>
+<body>
+    <element name="magazine" extends="article">
+        <template>
+             <content select="*" id="source"></content>
+             <style type="text/css">
+                
+                #source{
+                    -webkit-flow-into: article;
+                }
+                .region{
+                    -webkit-flow-from: article;
+                }
+                
+                .region{
+                    width: 50%;
+                    height: 300px;
+                    float: left;
+                }
+            </style>
+            
+            <div class="layout">
+                <article>
+                    <div class="region" ></div>
+                    <div class="region" ></div>
+                </article>
+            </div>
+            
+            <script>
+            
+            component = this
+            
+            this.lifecycle({
+                created: function(root) { 
+                    /* 
+                        Implementation bug: can't flow <content> into a named flow inside the component
+                        Hijack the component's host element to collect its content into a named flow.
+                    */
+                    var hackVector = '<style> [is="'+ component.name +'"] * { -webkit-flow-into: article } </style>'
+                    root.ownerDocument.body.insertAdjacentHTML('beforeend', hackVector)
+                }
+            });
+            
+            </script>
+        </template>
+    </element>    
+</body>
+</html>
+    
