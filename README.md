@@ -1,7 +1,9 @@
 CSS Regions as Web Components
 =====
 
-Encapsulate layout with CSS Regions into a reusable Web Component.
+Encapsulate layout with CSS Regions into a reusable Web Component. 
+
+Uses [@dglazkov](https://github.com/dglazkov)'s [Web-Components-Polyfill](https://github.com/dglazkov/Web-Components-Polyfill).
 
 **BEWARE: cutting-edge, experimental stuff. Might bite.**
 
